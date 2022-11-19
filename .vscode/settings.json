@@ -1,0 +1,5 @@
+{
+    "appService.preDeployTask": "publish-release",
+    "appService.deploySubpath": "bin/Release/net7.0/publish",
+    "appService.defaultWebAppToDeploy": "/subscriptions/bf3ff429-d86d-43a1-9326-f625a1e8bb50/appservices/subscriptions/bf3ff429-d86d-43a1-9326-f625a1e8bb50/resourceGroups/InfyGitHubDay/providers/Microsoft.Web/sites/InfyGitHubDayDemo"
+}
