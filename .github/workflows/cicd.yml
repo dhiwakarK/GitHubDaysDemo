@@ -24,3 +24,24 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet build
+      
+  publish:
+      # if: github.ref == 'main' test trigger
+      needs: build
+      runs-on: ubuntu-latest
+
+      steps:
+      - uses: actions/checkout@v3
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: 7.0.x
+      - name: Generate web app artifacts
+        run: |
+          mkdir $ARTIFACTS_LOCATION
+          dotnet publish -o $ARTIFACTS_LOCATION
+      - name: Publish artifacts
+        uses: actions/upload-artifact@v3.1.0
+        with: 
+          name: GitHubDaysDemo
+          path: ${{ env.ARTIFACTS_LOCATION }}
