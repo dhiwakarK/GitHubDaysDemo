@@ -1,0 +1,30 @@
+name: .NET Matrix Build
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  bulid_matrix:
+      strategy:
+        matrix:
+          os: [ubuntu-22.04, ubuntu-20.04]
+          dotnetversion: [7, 6]
+          
+  build:
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: ${{ matrix.dotnetversion }}
+    - name: Restore dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build
