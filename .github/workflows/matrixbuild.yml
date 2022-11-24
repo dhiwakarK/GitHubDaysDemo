@@ -10,7 +10,7 @@ jobs:
   bulid_matrix:
     strategy:
       matrix:
-        os: [ubuntu-latest, ubuntu-22.04, ubuntu-20.04, macos-latest]
+        os: [ubuntu-latest, ubuntu-22.04, ubuntu-20.04]
         dotnetversion: [6.0.*, 7.0.*]
     runs-on: ${{ matrix.os }}
     steps:
